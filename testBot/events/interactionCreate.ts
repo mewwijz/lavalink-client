@@ -7,7 +7,7 @@ export default {
     name: Events.InteractionCreate,
     execute: async (client, interaction: Interaction) => {
         if (!interaction.isCommand() && !interaction.isAutocomplete()) return;
-        const subCommand = (interaction.options as CommandInteractionOptionResolver).getSubcommand(false);
+        const subCommand = interaction.isChatInputCommand() ? interaction.options.getSubcommand(false) : null;
         const command = client.commands.get(interaction.commandName);
         if (!command) return console.error(`No command matching ${interaction.commandName} was found.`);
         try {
