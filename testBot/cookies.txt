@@ -1,0 +1,37 @@
+# Netscape HTTP Cookie File
+# This is a generated file! Do not edit.
+# Format: domain	flag	path	secure	expiration	name	value
+
+# YouTube Cookies untuk bypass restrictions
+# Dapatkan cookies ini dari browser setelah login ke YouTube
+# Cara mendapatkan:
+# 1. Buka YouTube di browser
+# 2. Login dengan akun Google
+# 3. Buka Developer Tools (F12)
+# 4. Pergi ke Application/Storage > Cookies > https://www.youtube.com
+# 5. Copy semua cookies ke format di bawah
+
+# Contoh format cookies (GANTI DENGAN COOKIES ASLI ANDA):
+.youtube.com	TRUE	/	TRUE	1735689600	VISITOR_INFO1_LIVE	PASTE_YOUR_VISITOR_INFO_HERE
+.youtube.com	TRUE	/	FALSE	1735689600	YSC	PASTE_YOUR_YSC_HERE
+.youtube.com	TRUE	/	TRUE	1735689600	PREF	PASTE_YOUR_PREF_HERE
+.youtube.com	TRUE	/	TRUE	1735689600	GPS	1
+.youtube.com	TRUE	/	TRUE	1735689600	CONSENT	PASTE_YOUR_CONSENT_HERE
+.youtube.com	TRUE	/	FALSE	1735689600	SOCS	PASTE_YOUR_SOCS_HERE
+
+# Google Cookies untuk OAuth
+.google.com	TRUE	/	TRUE	1735689600	NID	PASTE_YOUR_NID_HERE
+.google.com	TRUE	/	TRUE	1735689600	1P_JAR	PASTE_YOUR_1P_JAR_HERE
+.google.com	TRUE	/	TRUE	1735689600	AEC	PASTE_YOUR_AEC_HERE
+.google.com	TRUE	/	TRUE	1735689600	OGPC	PASTE_YOUR_OGPC_HERE
+
+# Session cookies
+.youtube.com	TRUE	/	FALSE	0	session_token	PASTE_YOUR_SESSION_TOKEN_HERE
+.youtube.com	TRUE	/	FALSE	0	LOGIN_INFO	PASTE_YOUR_LOGIN_INFO_HERE
+
+# IMPORTANT NOTES:
+# 1. Ganti semua "PASTE_YOUR_*_HERE" dengan nilai cookies asli dari browser
+# 2. Cookies ini akan expire, perlu diupdate secara berkala
+# 3. Jangan share cookies ini ke orang lain (berisi informasi login)
+# 4. Backup cookies ini sebelum expire
+# 5. Gunakan akun burner/dummy untuk keamanan

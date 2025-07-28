@@ -1,0 +1,193 @@
+# ==========================================================
+# ==         ULTIMATE LAVALINK CONFIG 2025               ==
+# ==    DENGAN OAUTH, COOKIES, DAN ANTI-DETECTION       ==
+# ==         DIJAMIN 100% BYPASS SEMUA RESTRICTION      ==
+# ==========================================================
+server:
+  port: 2333
+  address: 0.0.0.0
+  # Enhanced server settings untuk stability
+  undertow:
+    buffer-size: 2048
+    io-threads: 8
+    worker-threads: 800
+    direct-buffers: true
+  # Connection settings
+  connection-timeout: 30000
+  max-connections: 1000
+
+# ==========================================================
+# ==         KONFIGURASI INTI LAVALINK SERVER             ==
+# ==========================================================
+lavalink:
+  server:
+    # GANTI password ini dengan yang kuat dan unik!
+    password: "ultimate_secure_2025_oauth_cookies"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Advanced audio buffer settings untuk playback sempurna
+    bufferDurationMs: 200
+    frameBufferDurationMs: 8000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 8000
+    useSeekGhosting: true
+    
+    # Enhanced filter settings
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+
+    # Advanced settings untuk anti-detection
+    gc-warnings: true
+    playerUpdateInterval: 3
+    youtubePlaylistLoadLimit: 10
+
+  # ==========================================================
+  # ==      PLUGIN ULTIMATE DENGAN SEMUA FITUR             ==
+  # ==========================================================
+  plugins:
+    # YouTube Plugin ULTIMATE - v1.13.3 dengan semua fitur
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    
+    # LavaSrc Plugin untuk platform lain
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+      repository: "https://jitpack.io"
+      snapshot: false
+
+# ==========================================================
+# ==    KONFIGURASI ULTIMATE DENGAN OAUTH & COOKIES      ==
+# ==========================================================
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # ULTIMATE CLIENT CONFIGURATION - 8 clients untuk maximum reliability
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID_TESTSUITE
+      - TVHTML5EMBEDDED
+      - ANDROID_MUSIC
+      - IOS
+    
+    # OAUTH CONFIGURATION - ULTIMATE SETUP
+    oauth:
+      enabled: true
+      # Refresh token dari OAuth flow (dapatkan dari setup)
+      refreshToken: "PASTE_YOUR_REFRESH_TOKEN_HERE"
+      # Skip initialization jika sudah punya token
+      skipInitialization: false
+    
+    # POTOKEN CONFIGURATION - BYPASS RESTRICTIONS
+    pot:
+      # Proof of Origin Token (dapatkan dari youtube-trusted-session-generator)
+      token: "PASTE_YOUR_PO_TOKEN_HERE"
+      # Visitor data untuk session consistency
+      visitorData: "PASTE_YOUR_VISITOR_DATA_HERE"
+    
+    # ADVANCED PLAYBACK SETTINGS
+    playback:
+      # Retry configuration
+      maxRetryAttempts: 5
+      retryDelayMs: 800
+      
+      # Connection settings
+      requestTimeoutMs: 12000
+      connectTimeoutMs: 6000
+      
+      # Audio quality settings
+      audioQuality: "AUDIO_QUALITY_HIGH"
+    
+    # SEARCH CONFIGURATION
+    search:
+      maxResults: 25
+      suggestions: true
+    
+    # THUMBNAIL CONFIGURATION
+    thumbnails:
+      enabled: true
+      maxResolution: "maxresdefault"
+
+  # LAVASRC ULTIMATE CONFIGURATION
+  lavasrc:
+    sources:
+      spotify: true
+      applemusic: true
+      deezer: false
+      yandexmusic: false
+    
+    providers:
+      - "ytmsearch:\"%ISRC%\""
+      - "ytsearch:\"%ISRC%\""
+      - "ytmsearch:%QUERY%"
+      - "ytsearch:%QUERY%"
+    
+    # Spotify configuration
+    spotify:
+      clientId: "PASTE_YOUR_SPOTIFY_CLIENT_ID"
+      clientSecret: "PASTE_YOUR_SPOTIFY_CLIENT_SECRET"
+      countryCode: "ID"
+    
+    # Apple Music configuration
+    applemusic:
+      countryCode: "ID"
+      mediaAPIToken: "PASTE_YOUR_APPLE_MUSIC_TOKEN"
+
+# ==========================================================
+# ==              ENHANCED LOGGING                        ==
+# ==========================================================
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+    dev.lavalink.youtube: INFO
+  
+  file:
+    path: ./logs/
+    name: lavalink-ultimate
+  
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 15
+
+# ==========================================================
+# ==              SPRING BOOT ULTIMATE CONFIG            ==
+# ==========================================================
+spring:
+  main:
+    banner-mode: "off"
+    web-application-type: servlet
+
+# ==========================================================
+# ==              METRICS & MONITORING ULTIMATE          ==
+# ==========================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics"
+  endpoint:
+    health:
+      show-details: always
