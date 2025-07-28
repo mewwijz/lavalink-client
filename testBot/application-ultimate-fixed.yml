@@ -22,7 +22,7 @@ server:
 lavalink:
   server:
     # GANTI password ini dengan yang kuat dan unik!
-    password: "ultimate_secure_2025_oauth_cookies"
+    password: "chiro666"
     sources:
       youtube: true
       bandcamp: true
