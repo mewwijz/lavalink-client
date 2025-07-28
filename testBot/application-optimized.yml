@@ -1,0 +1,236 @@
+# ==========================================================
+# ==         KONFIGURASI LAVALINK TERBARU 2025            ==
+# ==    OPTIMIZED UNTUK YOUTUBE PLAYBACK YANG STABIL     ==
+# ==========================================================
+server:
+  port: 2333
+  address: 0.0.0.0
+  # Increase buffer sizes for better audio streaming
+  undertow:
+    buffer-size: 1024
+    io-threads: 4
+    worker-threads: 400
+
+# ==========================================================
+# ==         KONFIGURASI INTI LAVALINK SERVER             ==
+# ==========================================================
+lavalink:
+  server:
+    # GANTI password ini dengan yang kuat dan unik!
+    password: "chiro666_secure_2025"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Audio buffer settings untuk memastikan playback smooth
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+
+    # Pengaturan Lanjutan untuk stabilitas
+    gc-warnings: true
+    # Increase player update interval for better sync
+    playerUpdateInterval: 5
+    # Enable resume capability
+    youtubePlaylistLoadLimit: 6
+    # HTTP config for better connectivity
+    httpConfig:
+      proxyHost: ""
+      proxyPort: 0
+      proxyUser: ""
+      proxyPassword: ""
+
+  # ==========================================================
+  # ==      PLUGIN TERBARU UNTUK YOUTUBE SUPPORT           ==
+  # ==========================================================
+  plugins:
+    # YouTube Plugin TERBARU - v1.13.3 (Juni 2025)
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    
+    # LavaSrc Plugin TERBARU untuk Spotify, Apple Music, dll
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+      repository: "https://jitpack.io"
+      snapshot: false
+    
+    # LavaSearch Plugin untuk search yang lebih baik
+    - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
+      repository: "https://jitpack.io"
+      snapshot: false
+
+# ==========================================================
+# ==    KONFIGURASI PLUGIN UNTUK PERFORMA MAKSIMAL       ==
+# ==========================================================
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # KONFIGURASI CLIENT TERBARU - Multiple fallback untuk reliability
+    clients:
+      - MUSIC          # Primary - Best audio quality
+      - WEB            # Fallback 1 - Most compatible
+      - ANDROID_TESTSUITE  # Fallback 2 - Mobile optimized
+      - TVHTML5EMBEDDED    # Fallback 3 - TV/Embed support
+      - ANDROID_MUSIC      # Fallback 4 - Android Music app
+      - IOS               # Fallback 5 - iOS support
+    
+    # Advanced YouTube settings untuk stabilitas
+    playback:
+      # Retry settings untuk connection issues
+      maxRetryAttempts: 3
+      retryDelayMs: 1000
+      
+      # Audio quality preferences
+      audioQuality: "AUDIO_QUALITY_MEDIUM"  # Balance between quality and stability
+      
+      # Timeout settings
+      requestTimeoutMs: 10000
+      connectTimeoutMs: 5000
+    
+    # OAuth configuration untuk mengatasi rate limiting
+    oauth:
+      enabled: true
+      # Uncomment dan isi jika punya refresh token
+      # refreshToken: "YOUR_REFRESH_TOKEN_HERE"
+      skipInitialization: false
+    
+    # poToken configuration untuk bypass restrictions
+    pot:
+      # Uncomment dan isi jika punya poToken
+      # token: "YOUR_PO_TOKEN_HERE"
+      # visitorData: "YOUR_VISITOR_DATA_HERE"
+    
+    # Search configuration
+    search:
+      maxResults: 10
+      # Enable search suggestions
+      suggestions: true
+    
+    # Thumbnail configuration
+    thumbnails:
+      enabled: true
+      maxResolution: "maxresdefault"
+
+  # LavaSrc configuration untuk platform lain
+  lavasrc:
+    sources:
+      spotify: true
+      applemusic: true
+      deezer: false  # Disabled to avoid master key issues
+      yandexmusic: false
+      flowerytts: false
+    
+    providers:
+      - "ytmsearch:\"%ISRC%\""
+      - "ytsearch:\"%ISRC%\""
+      - "ytmsearch:%QUERY%"
+      - "ytsearch:%QUERY%"
+    
+    spotify:
+      # Ganti dengan kredensial Spotify yang valid
+      clientId: "GANTI_DENGAN_SPOTIFY_CLIENT_ID"
+      clientSecret: "GANTI_DENGAN_SPOTIFY_CLIENT_SECRET"
+      countryCode: "ID"
+      # Playlist load limit
+      playlistLoadLimit: 6
+      # Album load limit  
+      albumLoadLimit: 6
+    
+    applemusic:
+      countryCode: "ID"
+      mediaAPIToken: "GANTI_DENGAN_APPLE_MUSIC_TOKEN"
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+
+# ==========================================================
+# ==              KONFIGURASI LOGGING                     ==
+# ==========================================================
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+    # Enable debug untuk YouTube jika ada masalah
+    dev.lavalink.youtube: INFO
+    # Enable debug untuk audio jika ada masalah playback
+    com.sedmelluq.discord.lavaplayer: INFO
+  
+  # Pattern untuk log yang lebih informatif
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  
+  file:
+    path: ./logs/
+    name: lavalink
+  
+  logback:
+    rollingpolicy:
+      max-file-size: 50MB
+      max-history: 10
+      total-size-cap: 500MB
+
+# ==========================================================
+# ==              SPRING BOOT CONFIGURATION              ==
+# ==========================================================
+spring:
+  main:
+    banner-mode: "off"
+    web-application-type: servlet
+  
+  # HTTP configuration
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+# ==========================================================
+# ==              METRICS & MONITORING                   ==
+# ==========================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics"
+  endpoint:
+    health:
+      show-details: always
+  metrics:
+    export:
+      prometheus:
+        enabled: false
+
+# ==========================================================
+# ==              NETWORK & PERFORMANCE                  ==
+# ==========================================================
+# JVM Options yang direkomendasikan (tambahkan di startup):
+# -Xms512m -Xmx2g
+# -XX:+UseG1GC
+# -XX:+UseStringDeduplication
+# -XX:MaxGCPauseMillis=150
+# -XX:+UnlockExperimentalVMOptions
+# -XX:+UseJVMCICompiler
+# -Dnashorn.args=--no-deprecation-warning
