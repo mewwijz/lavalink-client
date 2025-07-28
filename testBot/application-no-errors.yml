@@ -7,7 +7,7 @@ server:
 
 lavalink:
   server:
-    password: "chiro666_secure_2025"
+    password: "chiro666"
     sources:
       youtube: true
       bandcamp: true
