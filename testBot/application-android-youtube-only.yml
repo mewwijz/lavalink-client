@@ -1,0 +1,121 @@
+# LAVALINK CONFIG 2025 - ANDROID YOUTUBE ONLY
+# Perfect for Android users - NO APPLE MUSIC, NO COMPLICATIONS!
+# Just paste your YouTube OAuth tokens and you're ready to go!
+
+server:
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "chiro666"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Audio settings untuk smooth playback
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+
+    gc-warnings: true
+    playerUpdateInterval: 5
+    youtubePlaylistLoadLimit: 6
+
+  plugins:
+    # YouTube Plugin ONLY - v1.13.3 (NO APPLE MUSIC CONFLICTS!)
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+
+# Plugin configuration
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # Android-optimized clients untuk best performance
+    clients:
+      - MUSIC              # YouTube Music client
+      - WEB                # Web client
+      - ANDROID_TESTSUITE  # 🤖 Android optimized!
+      - TVHTML5EMBEDDED    # TV client for stability
+      - ANDROID_MUSIC      # 🤖 Android Music client!
+      - IOS                # iOS client for variety
+    
+    # 🔑 YOUTUBE OAUTH TOKENS - PASTE YOUR TOKENS HERE!
+    # ================================================
+    oauth:
+      enabled: true
+      skipInitialization: false
+      
+      # 👇 PASTE YOUR REFRESH TOKEN HERE (yang udah lu dapat!)
+      refreshToken: "PASTE_YOUR_YOUTUBE_REFRESH_TOKEN_HERE"
+      
+      # 👇 PASTE YOUR ACCESS TOKEN HERE (yang udah lu dapat!)
+      accessToken: "PASTE_YOUR_YOUTUBE_ACCESS_TOKEN_HERE"
+    
+    # 🍪 YOUTUBE COOKIES (OPTIONAL - dari browser Android)
+    # ==================================================
+    cookies:
+      enabled: true
+      # Format: "name1=value1; name2=value2; name3=value3"
+      # Bisa didapat dari browser Android Chrome/Firefox
+      cookie: "PASTE_YOUR_YOUTUBE_COOKIES_HERE_IF_YOU_HAVE_THEM"
+    
+    # 🎯 POTOKEN (OPTIONAL - anti-detection)
+    # ====================================
+    # Bisa didapat dari browser Android dengan inspect element
+    poToken: "PASTE_YOUR_POTOKEN_HERE_IF_YOU_HAVE_IT"
+    
+    # Search settings
+    search:
+      maxResults: 10
+      suggestions: true
+    
+    # Thumbnail settings
+    thumbnails:
+      enabled: true
+      maxResolution: "maxresdefault"
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+    dev.lavalink.youtube: INFO
+
+  file:
+    path: ./logs/
+  
+  logback:
+    rollingpolicy:
+      max-file-size: 25MB
+      max-history: 8
+
+# Spring configuration
+spring:
+  main:
+    banner-mode: "off"
