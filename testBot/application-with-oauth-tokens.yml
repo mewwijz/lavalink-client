@@ -1,0 +1,163 @@
+# LAVALINK CONFIG 2025 - WITH YOUTUBE OAUTH & APPLE MUSIC TOKENS
+# Complete configuration supporting both YouTube OAuth and Apple Music tokens
+
+server:
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "chiro666_oauth_2025"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Audio settings untuk smooth playback
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+
+    gc-warnings: true
+    playerUpdateInterval: 5
+    youtubePlaylistLoadLimit: 6
+
+  plugins:
+    # YouTube Plugin TERBARU - v1.13.3
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    
+    # LavaSrc Plugin untuk Spotify & Apple Music
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+      repository: "https://jitpack.io"
+      snapshot: false
+
+# Plugin configuration
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # Multiple clients untuk reliability
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID_TESTSUITE
+      - TVHTML5EMBEDDED
+      - ANDROID_MUSIC
+      - IOS
+      - ANDROID_VR
+      - WEB_REMIX
+    
+    # 🔑 YOUTUBE OAUTH CONFIGURATION - UNLIMITED API ACCESS
+    oauth:
+      enabled: true
+      skipInitialization: false
+      # 👇 PASTE YOUR YOUTUBE OAUTH TOKENS HERE:
+      refreshToken: "YOUR_YOUTUBE_OAUTH_REFRESH_TOKEN_HERE"  # 👈 REQUIRED: Format 1//04xxxxx
+      accessToken: "YOUR_YOUTUBE_OAUTH_ACCESS_TOKEN_HERE"    # 👈 OPTIONAL: Format ya29.xxxxx
+      forceRefresh: true
+      retryOnFailure: true
+    
+    # 🎯 YOUTUBE PREMIUM FEATURES (OPTIONAL)
+    poToken: "YOUR_YOUTUBE_PO_TOKEN_HERE"          # 👈 OPTIONAL: YouTube Premium bypass
+    visitorData: "YOUR_YOUTUBE_VISITOR_DATA_HERE"  # 👈 OPTIONAL: Session persistence
+    
+    # Search settings
+    search:
+      maxResults: 20
+      suggestions: true
+    
+    # Thumbnail settings
+    thumbnails:
+      enabled: true
+      maxResolution: "maxresdefault"
+    
+    # Anti-detection settings
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+  lavasrc:
+    # ENABLE ALL SOURCES WITH TOKENS
+    sources:
+      spotify: true
+      applemusic: true  # ENABLED with token support
+      deezer: false
+      yandexmusic: false
+    
+    providers:
+      - "amsearch:\"%ISRC%\""      # Apple Music search dengan ISRC
+      - "ytmsearch:\"%ISRC%\""     # YouTube Music search dengan ISRC
+      - "ytsearch:\"%ISRC%\""      # YouTube search dengan ISRC
+      - "amsearch:%QUERY%"         # Apple Music search dengan query
+      - "ytmsearch:%QUERY%"        # YouTube Music search dengan query
+      - "ytsearch:%QUERY%"         # YouTube search dengan query
+    
+    # 🎵 SPOTIFY CONFIGURATION (OPTIONAL)
+    spotify:
+      clientId: "YOUR_SPOTIFY_CLIENT_ID_HERE"      # 👈 OPTIONAL: Spotify app client ID
+      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET_HERE"  # 👈 OPTIONAL: Spotify app client secret
+      countryCode: "ID"
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+    
+    # 🍎 APPLE MUSIC CONFIGURATION - PREMIUM MUSIC ACCESS
+    applemusic:
+      countryCode: "ID"
+      mediaAPIToken: "YOUR_APPLE_MUSIC_TOKEN_HERE"  # 👈 REQUIRED: Apple Music JWT token
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+      # Advanced Apple Music settings:
+      searchLimit: 10
+      previewLength: 30
+
+# Logging configuration dengan OAuth debugging
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+    dev.lavalink.youtube: DEBUG          # Enable YouTube OAuth debugging
+    com.github.topi314.lavasrc: INFO     # Enable LavaSrc logging
+
+  file:
+    path: ./logs/
+  
+  logback:
+    rollingpolicy:
+      max-file-size: 25MB
+      max-history: 8
+
+# Spring configuration
+spring:
+  main:
+    banner-mode: "off"
+
+# 🔒 SECURITY NOTES:
+# 1. Change default password "chiro666_oauth_2025" to something secure
+# 2. Use environment variables for tokens in production:
+#    refreshToken: "${YOUTUBE_REFRESH_TOKEN}"
+#    mediaAPIToken: "${APPLE_MUSIC_TOKEN}"
+# 3. Rotate tokens regularly (every 3-6 months)
+# 4. Monitor token usage in respective developer consoles
+# 5. Use dedicated accounts for bot tokens (not personal accounts)
