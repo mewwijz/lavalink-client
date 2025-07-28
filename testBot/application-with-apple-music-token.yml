@@ -1,0 +1,147 @@
+# LAVALINK CONFIG 2025 - WITH APPLE MUSIC TOKEN
+# Complete configuration with Apple Music token support
+
+server:
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "chiro666"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Audio settings untuk smooth playback
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+
+    gc-warnings: true
+    playerUpdateInterval: 5
+    youtubePlaylistLoadLimit: 6
+
+  plugins:
+    # YouTube Plugin TERBARU - v1.13.3
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    
+    # LavaSrc Plugin dengan Apple Music ENABLED
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+      repository: "https://jitpack.io"
+      snapshot: false
+
+# Plugin configuration
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # Multiple clients untuk reliability
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID_TESTSUITE
+      - TVHTML5EMBEDDED
+      - ANDROID_MUSIC
+      - IOS
+    
+    # 🔑 OAUTH CONFIGURATION - TARUH TOKEN YOUTUBE ANDA DI SINI!
+    oauth:
+      enabled: true
+      skipInitialization: false
+      # OAuth tokens untuk bypass rate limits
+      refreshToken: "YOUR_YOUTUBE_OAUTH_REFRESH_TOKEN_HERE"  # 👈 GANTI DENGAN REFRESH TOKEN ANDA!
+      accessToken: "YOUR_YOUTUBE_OAUTH_ACCESS_TOKEN_HERE"    # 👈 GANTI DENGAN ACCESS TOKEN ANDA!
+    
+    # 🍪 COOKIES CONFIGURATION (alternative/additional)
+    cookies:
+      enabled: true
+      # Format: "name1=value1; name2=value2; name3=value3"
+      cookie: "YOUR_YOUTUBE_COOKIES_HERE"  # 👈 OPTIONAL: Cookies dari browser
+    
+    # 🎯 POTOKEN CONFIGURATION (anti-detection)
+    poToken: "YOUR_YOUTUBE_POTOKEN_HERE"  # 👈 OPTIONAL: poToken untuk anti-detection
+    
+    # Search settings
+    search:
+      maxResults: 10
+      suggestions: true
+    
+    # Thumbnail settings
+    thumbnails:
+      enabled: true
+      maxResolution: "maxresdefault"
+
+  lavasrc:
+    # ENABLE ALL SOURCES INCLUDING APPLE MUSIC
+    sources:
+      spotify: true
+      applemusic: true  # ENABLED karena sudah ada token
+      deezer: false
+      yandexmusic: false
+    
+    providers:
+      - "amsearch:\"%ISRC%\""      # Apple Music search dengan ISRC
+      - "ytmsearch:\"%ISRC%\""     # YouTube Music search dengan ISRC
+      - "ytsearch:\"%ISRC%\""      # YouTube search dengan ISRC
+      - "amsearch:%QUERY%"         # Apple Music search dengan query
+      - "ytmsearch:%QUERY%"        # YouTube Music search dengan query
+      - "ytsearch:%QUERY%"         # YouTube search dengan query
+    
+    # Spotify configuration (optional)
+    spotify:
+      clientId: ""
+      clientSecret: ""
+      countryCode: "ID"
+    
+    # 🎯 APPLE MUSIC CONFIGURATION - TARUH TOKEN ANDA DI SINI!
+    applemusic:
+      countryCode: "ID"
+      mediaAPIToken: "YOUR_APPLE_MUSIC_TOKEN_HERE"  # 👈 GANTI INI DENGAN TOKEN ANDA!
+      playlistLoadLimit: 6
+      albumLoadLimit: 6
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+    dev.lavalink.youtube: INFO
+    com.github.topi314.lavasrc: INFO  # Enable LavaSrc logging
+
+  file:
+    path: ./logs/
+  
+  logback:
+    rollingpolicy:
+      max-file-size: 25MB
+      max-history: 8
+
+# Spring configuration
+spring:
+  main:
+    banner-mode: "off"
