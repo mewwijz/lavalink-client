@@ -295,4 +295,6 @@ client.on("raw", d => client.lavalink.sendRawData(d));
 
 console.log("🎵 Music Bot Starting...");
 console.log("📝 Type !help for commands");
+console.log("🔍 Debug - Token loaded:", process.env.DISCORD_TOKEN ? "✅ YES" : "❌ NO");
+console.log("🔍 Debug - Token length:", process.env.DISCORD_TOKEN ? process.env.DISCORD_TOKEN.length : "undefined");
 client.login(process.env.DISCORD_TOKEN);
