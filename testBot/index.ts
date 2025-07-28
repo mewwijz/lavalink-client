@@ -52,13 +52,11 @@ console.log(LavalinkNodesOfEnv); // you can then provide the result of here in L
     client.lavalink = new LavalinkManager({
         nodes: [
             {
-                authorization: "chrissy_localhost",
-                host: "localhost",
+                authorization: "chiro666",
+                host: "174.138.24.59",
                 port: 2333,
                 id: "testnode",
                 sessionId: nodeSessions.get("testnode"),
-                // or add it manually like this:
-                // sessionId: "lsvunq8h8bxx0m9w", // add the sessionId in order to resume the session for the node, and then to recover the players listen to nodeManager#resumed.
                 requestSignalTimeoutMS: 3000,
                 closeOnError: true,
                 heartBeatInterval: 30_000,
