@@ -1,0 +1,132 @@
+# WORKING LAVALINK CONFIG 2025 - TESTED & VALIDATED
+server:
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "chiro666_secure_2025"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Audio settings untuk smooth playback
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+
+    gc-warnings: true
+    playerUpdateInterval: 5
+    youtubePlaylistLoadLimit: 6
+
+  plugins:
+    # YouTube Plugin TERBARU - v1.13.3
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    
+    # LavaSrc Plugin untuk Spotify, Apple Music, dll
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+      repository: "https://jitpack.io"
+      snapshot: false
+
+# Plugin configuration
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # Multiple clients untuk reliability
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID_TESTSUITE
+      - TVHTML5EMBEDDED
+      - ANDROID_MUSIC
+      - IOS
+    
+    # OAuth configuration
+    oauth:
+      enabled: true
+      # Uncomment dan isi jika punya refresh token
+      # refreshToken: "your_refresh_token_here"
+      skipInitialization: false
+    
+    # poToken configuration
+    pot:
+      # Uncomment dan isi jika punya poToken
+      # token: "your_po_token_here"
+      # visitorData: "your_visitor_data_here"
+    
+    # Search settings
+    search:
+      maxResults: 10
+      suggestions: true
+    
+    # Thumbnail settings
+    thumbnails:
+      enabled: true
+      maxResolution: "maxresdefault"
+
+  lavasrc:
+    sources:
+      spotify: true
+      applemusic: true
+      deezer: false
+      yandexmusic: false
+    
+    providers:
+      - "ytmsearch:\"%ISRC%\""
+      - "ytsearch:\"%ISRC%\""
+      - "ytmsearch:%QUERY%"
+      - "ytsearch:%QUERY%"
+    
+    spotify:
+      clientId: "GANTI_DENGAN_SPOTIFY_CLIENT_ID"
+      clientSecret: "GANTI_DENGAN_SPOTIFY_CLIENT_SECRET"
+      countryCode: "ID"
+    
+    applemusic:
+      countryCode: "ID"
+
+# Logging configuration
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+    dev.lavalink.youtube: INFO
+
+  file:
+    path: ./logs/
+  
+  logback:
+    rollingpolicy:
+      max-file-size: 25MB
+      max-history: 8
+
+# Spring configuration
+spring:
+  main:
+    banner-mode: "off"
