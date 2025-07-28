@@ -75,7 +75,7 @@ plugins:
       enabled: true
       skipInitialization: false
       # 👇👇👇 PASTE YOUR YOUTUBE REFRESH TOKEN HERE 👇👇👇
-      refreshToken: "PASTE_YOUR_YOUTUBE_REFRESH_TOKEN_HERE"
+      refreshToken: "1//0gHzYTtna59YZCgYIARAAGBASNwF-L9IrBtN2cTSU4Dqnv1tfZO69ArRlXTmBKGrTd5AoxxxasqJXUrxJp3rIqtDKsAvFvdqKdLY"
       # 👆👆👆 PASTE YOUR YOUTUBE REFRESH TOKEN HERE 👆👆👆
       forceRefresh: true
       retryOnFailure: true
@@ -108,8 +108,8 @@ plugins:
     
     # 🎵 SPOTIFY CONFIGURATION (OPTIONAL - Leave empty if you don't have)
     spotify:
-      clientId: "YOUR_SPOTIFY_CLIENT_ID_HERE"      # 👈 OPTIONAL: Spotify app client ID
-      clientSecret: "YOUR_SPOTIFY_CLIENT_SECRET_HERE"  # 👈 OPTIONAL: Spotify app client secret
+      clientId: "0e7b9b46993d4a9ab295da2da2dc5909"      # 👈 OPTIONAL: Spotify app client ID
+      clientSecret: "7a6285d30ba44870ae0040d4fad342f9"  # 👈 OPTIONAL: Spotify app client secret
       countryCode: "ID"
       playlistLoadLimit: 6
       albumLoadLimit: 6
