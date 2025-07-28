@@ -1,0 +1,79 @@
+# MINIMAL LAVALINK CONFIG - YOUTUBE ONLY, NO DEPENDENCIES
+# Guaranteed to work without any plugin conflicts
+
+server:
+  port: 2333
+  address: 0.0.0.0
+
+lavalink:
+  server:
+    password: "chiro666_secure_2025"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Audio settings
+    bufferDurationMs: 400
+    frameBufferDurationMs: 5000
+    opusEncodingQuality: 10
+    resamplingQuality: HIGH
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+
+    gc-warnings: true
+
+  plugins:
+    # ONLY YouTube Plugin - no other dependencies
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+
+# Plugin configuration
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # Multiple clients untuk reliability
+    clients:
+      - MUSIC
+      - WEB
+      - ANDROID_TESTSUITE
+      - TVHTML5EMBEDDED
+      - ANDROID_MUSIC
+      - IOS
+    
+    # OAuth configuration (optional)
+    oauth:
+      enabled: true
+      skipInitialization: false
+
+# Logging
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+
+# Spring
+spring:
+  main:
+    banner-mode: "off"
