@@ -1,5 +1,6 @@
 const { Client, GatewayIntentBits } = require("discord.js");
 const { LavalinkManager } = require("lavalink-client");
+require('dotenv').config();
 
 const client = new Client({
     intents: [
@@ -12,14 +13,14 @@ const client = new Client({
 
 const lavalink = new LavalinkManager({
     nodes: [{
-        authorization: "YOUR_LAVALINK_PASSWORD",
-        host: "YOUR_LAVALINK_HOST",
-        port: 2333,
+        authorization: process.env.LAVALINK_PASSWORD || "YOUR_LAVALINK_PASSWORD",
+        host: process.env.LAVALINK_HOST || "YOUR_LAVALINK_HOST", 
+        port: parseInt(process.env.LAVALINK_PORT) || 2333,
         id: "testnode",
         secure: false,
     }],
     sendToShard: (guildId, payload) => client.guilds.cache.get(guildId)?.shard?.send(payload),
-    client: { id: "YOUR_BOT_CLIENT_ID", username: "EICHIRO" },
+    client: { id: process.env.BOT_CLIENT_ID || "YOUR_BOT_CLIENT_ID", username: "EICHIRO" },
     autoSkip: true,
     playerOptions: {
         defaultSearchPlatform: "scsearch",
@@ -294,4 +295,6 @@ client.on("raw", d => client.lavalink.sendRawData(d));
 
 console.log("🎵 Music Bot Starting...");
 console.log("📝 Type !help for commands");
+console.log("🔍 Debug - Token loaded:", process.env.DISCORD_TOKEN ? "✅ YES" : "❌ NO");
+console.log("🔍 Debug - Token length:", process.env.DISCORD_TOKEN ? process.env.DISCORD_TOKEN.length : "undefined");
 client.login(process.env.DISCORD_TOKEN);
