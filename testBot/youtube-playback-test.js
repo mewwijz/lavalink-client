@@ -25,7 +25,7 @@ class YouTubePlaybackTester {
         this.lavalink = new LavalinkManager({
             nodes: [
                 {
-                    authorization: "chiro666_secure_2025",
+                    authorization: "chiro666",
                     host: "localhost",
                     port: 2333,
                     id: "main_node",
