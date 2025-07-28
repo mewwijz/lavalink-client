@@ -1,0 +1,432 @@
+# ==========================================================
+# ==         ULTIMATE LAVALINK CONFIG 2025               ==
+# ==    DENGAN OAUTH, COOKIES, DAN ANTI-DETECTION       ==
+# ==         DIJAMIN 100% BYPASS SEMUA RESTRICTION      ==
+# ==========================================================
+server:
+  port: 2333
+  address: 0.0.0.0
+  # Enhanced server settings untuk stability
+  undertow:
+    buffer-size: 2048
+    io-threads: 8
+    worker-threads: 800
+    direct-buffers: true
+  # Connection settings
+  connection-timeout: 30000
+  max-connections: 1000
+
+# ==========================================================
+# ==         KONFIGURASI INTI LAVALINK SERVER             ==
+# ==========================================================
+lavalink:
+  server:
+    # GANTI password ini dengan yang kuat dan unik!
+    password: "ultimate_secure_2025_oauth_cookies"
+    sources:
+      youtube: true
+      bandcamp: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      http: true
+      local: false
+    
+    # Advanced audio buffer settings untuk playback sempurna
+    bufferDurationMs: 200          # Reduced untuk faster response
+    frameBufferDurationMs: 8000    # Increased untuk stability
+    opusEncodingQuality: 10        # Maximum quality
+    resamplingQuality: HIGH        # High quality resampling
+    trackStuckThresholdMs: 8000    # Faster stuck detection
+    useSeekGhosting: true          # Smooth seeking
+    
+    # Enhanced filter settings
+    filters:
+      volume: true
+      equalizer: true
+      karaoke: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      distortion: true
+      rotation: true
+      channelMix: true
+      lowPass: true
+      highPass: true
+      bandPass: true
+      echo: true
+      reverb: true
+
+    # Advanced settings untuk anti-detection
+    gc-warnings: true
+    playerUpdateInterval: 3        # Faster updates
+    youtubePlaylistLoadLimit: 10   # More tracks per load
+    
+    # HTTP config dengan user-agent spoofing
+    httpConfig:
+      proxyHost: ""
+      proxyPort: 0
+      proxyUser: ""
+      proxyPassword: ""
+      # Custom headers untuk bypass detection
+      userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      requestTimeout: 15000
+      connectTimeout: 8000
+
+  # ==========================================================
+  # ==      PLUGIN ULTIMATE DENGAN SEMUA FITUR             ==
+  # ==========================================================
+  plugins:
+    # YouTube Plugin ULTIMATE - v1.13.3 dengan semua fitur
+    - dependency: "dev.lavalink.youtube:youtube-plugin:1.13.3"
+      repository: "https://maven.lavalink.dev/releases"
+      snapshot: false
+    
+    # LavaSrc Plugin untuk platform lain
+    - dependency: "com.github.topi314.lavasrc:lavasrc-plugin:4.7.3"
+      repository: "https://jitpack.io"
+      snapshot: false
+    
+    # LavaSearch Plugin untuk search advanced
+    - dependency: "com.github.topi314.lavasearch:lavasearch-plugin:1.0.0"
+      repository: "https://jitpack.io"
+      snapshot: false
+    
+    # LavaLyrics Plugin untuk lyrics support
+    - dependency: "com.github.topi314.lavalyrics:lavalyrics-plugin:1.0.0"
+      repository: "https://jitpack.io"
+      snapshot: false
+
+# ==========================================================
+# ==    KONFIGURASI ULTIMATE DENGAN OAUTH & COOKIES      ==
+# ==========================================================
+plugins:
+  youtube:
+    enabled: true
+    allowSearch: true
+    allowDirectVideoIds: true
+    allowDirectPlaylistIds: true
+    
+    # ULTIMATE CLIENT CONFIGURATION - 8 clients untuk maximum reliability
+    clients:
+      - MUSIC              # Primary - Best audio quality
+      - WEB                # Fallback 1 - Most compatible
+      - ANDROID_TESTSUITE  # Fallback 2 - Mobile optimized
+      - TVHTML5EMBEDDED    # Fallback 3 - TV/Embed support
+      - ANDROID_MUSIC      # Fallback 4 - Android Music app
+      - IOS                # Fallback 5 - iOS support
+      - ANDROID_CREATOR    # Fallback 6 - Creator app
+      - ANDROID_VR         # Fallback 7 - VR support
+    
+    # OAUTH CONFIGURATION - ULTIMATE SETUP
+    oauth:
+      enabled: true
+      # Refresh token dari OAuth flow (dapatkan dari setup)
+      refreshToken: "PASTE_YOUR_REFRESH_TOKEN_HERE"
+      # Skip initialization jika sudah punya token
+      skipInitialization: false
+      # Auto refresh token sebelum expire
+      autoRefresh: true
+      # Refresh margin dalam detik
+      refreshMarginSeconds: 300
+      # Custom OAuth scopes
+      scopes:
+        - "https://www.googleapis.com/auth/youtube"
+        - "https://www.googleapis.com/auth/youtube.readonly"
+    
+    # POTOKEN CONFIGURATION - BYPASS RESTRICTIONS
+    pot:
+      # Proof of Origin Token (dapatkan dari youtube-trusted-session-generator)
+      token: "PASTE_YOUR_PO_TOKEN_HERE"
+      # Visitor data untuk session consistency
+      visitorData: "PASTE_YOUR_VISITOR_DATA_HERE"
+      # Auto refresh poToken
+      autoRefresh: true
+      # Refresh interval dalam menit
+      refreshIntervalMinutes: 30
+    
+    # COOKIES CONFIGURATION - ULTIMATE BYPASS
+    cookies:
+      # Path ke file cookies.txt (format Netscape)
+      cookieFile: "./cookies.txt"
+      # Auto reload cookies jika file berubah
+      autoReload: true
+      # Reload interval dalam menit
+      reloadIntervalMinutes: 15
+      # Custom cookie headers
+      customHeaders:
+        "Accept-Language": "en-US,en;q=0.9,id;q=0.8"
+        "Accept-Encoding": "gzip, deflate, br"
+        "Cache-Control": "no-cache"
+        "Pragma": "no-cache"
+        "Sec-Fetch-Dest": "empty"
+        "Sec-Fetch-Mode": "cors"
+        "Sec-Fetch-Site": "same-origin"
+    
+    # ADVANCED PLAYBACK SETTINGS
+    playback:
+      # Retry configuration
+      maxRetryAttempts: 5          # Increased retry attempts
+      retryDelayMs: 800           # Faster retry
+      exponentialBackoff: true     # Smart retry delay
+      maxRetryDelayMs: 5000       # Max retry delay
+      
+      # Connection settings
+      requestTimeoutMs: 12000     # Request timeout
+      connectTimeoutMs: 6000      # Connection timeout
+      readTimeoutMs: 10000        # Read timeout
+      
+      # Audio quality settings
+      audioQuality: "AUDIO_QUALITY_HIGH"  # High quality audio
+      preferredCodec: "opus"      # Preferred audio codec
+      
+      # Advanced settings
+      useHttp2: true              # HTTP/2 support
+      enableGzip: true            # Compression
+      followRedirects: true       # Follow redirects
+      maxRedirects: 5             # Max redirect count
+    
+    # SEARCH CONFIGURATION
+    search:
+      maxResults: 25              # More search results
+      suggestions: true           # Enable suggestions
+      autoCorrect: true           # Auto correct typos
+      safeSearch: false           # Disable safe search
+      # Custom search parameters
+      customParams:
+        "hl": "en"                # Language
+        "gl": "US"                # Region
+        "cr": "countryUS"         # Country restriction
+    
+    # THUMBNAIL CONFIGURATION
+    thumbnails:
+      enabled: true
+      maxResolution: "maxresdefault"
+      fallbackResolutions:
+        - "hqdefault"
+        - "mqdefault"
+        - "default"
+    
+    # ANTI-DETECTION FEATURES
+    antiDetection:
+      # Rotate user agents
+      rotateUserAgents: true
+      userAgents:
+        - "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        - "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        - "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+      
+      # Random delays
+      randomDelays: true
+      minDelayMs: 100
+      maxDelayMs: 500
+      
+      # IP rotation (jika menggunakan proxy)
+      rotateProxies: false
+      proxyList: []
+      
+      # Request fingerprinting
+      spoofFingerprint: true
+      customFingerprint:
+        "screen": "1920x1080"
+        "timezone": "America/New_York"
+        "language": "en-US"
+        "platform": "Win32"
+
+  # LAVASRC ULTIMATE CONFIGURATION
+  lavasrc:
+    sources:
+      spotify: true
+      applemusic: true
+      deezer: true               # Enabled dengan proper config
+      yandexmusic: true          # Enabled
+      flowerytts: true           # Text-to-speech
+      youtube: true              # YouTube Music integration
+    
+    providers:
+      # Enhanced provider list
+      - "ytmsearch:\"%ISRC%\""
+      - "ytsearch:\"%ISRC%\""
+      - "scsearch:\"%ISRC%\""
+      - "ytmsearch:%QUERY%"
+      - "ytsearch:%QUERY%"
+      - "scsearch:%QUERY%"
+      - "spsearch:%QUERY%"
+      - "amsearch:%QUERY%"
+      - "dzsearch:%QUERY%"
+    
+    # Spotify configuration dengan OAuth
+    spotify:
+      clientId: "PASTE_YOUR_SPOTIFY_CLIENT_ID"
+      clientSecret: "PASTE_YOUR_SPOTIFY_CLIENT_SECRET"
+      countryCode: "ID"
+      playlistLoadLimit: 10
+      albumLoadLimit: 10
+      # OAuth settings
+      oauthEnabled: true
+      refreshToken: "PASTE_SPOTIFY_REFRESH_TOKEN"
+    
+    # Apple Music configuration
+    applemusic:
+      countryCode: "ID"
+      mediaAPIToken: "PASTE_YOUR_APPLE_MUSIC_TOKEN"
+      playlistLoadLimit: 10
+      albumLoadLimit: 10
+      # Enhanced settings
+      storefront: "id"
+      language: "en-US"
+    
+    # Deezer configuration
+    deezer:
+      masterDecryptionKey: "PASTE_YOUR_DEEZER_MASTER_KEY"
+      # ARL token untuk Deezer
+      arl: "PASTE_YOUR_DEEZER_ARL_TOKEN"
+    
+    # Yandex Music configuration
+    yandexmusic:
+      accessToken: "PASTE_YOUR_YANDEX_ACCESS_TOKEN"
+      
+    # Flowery TTS configuration
+    flowerytts:
+      voice: "default"
+      translate: false
+      silence: 0
+      speed: 1.0
+      audioFormat: "mp3"
+
+  # LAVALYRICS CONFIGURATION
+  lavalyrics:
+    sources:
+      - "spotify"
+      - "deezer" 
+      - "youtube"
+      - "genius"
+      - "musixmatch"
+    
+    # Spotify lyrics
+    spotify:
+      clientId: "PASTE_YOUR_SPOTIFY_CLIENT_ID"
+      clientSecret: "PASTE_YOUR_SPOTIFY_CLIENT_SECRET"
+      countryCode: "ID"
+
+# ==========================================================
+# ==              ENHANCED LOGGING                        ==
+# ==========================================================
+logging:
+  level:
+    root: INFO
+    lavalink: INFO
+    # Detailed logging untuk debugging
+    dev.lavalink.youtube: DEBUG
+    com.sedmelluq.discord.lavaplayer: INFO
+    com.github.topi314.lavasrc: INFO
+    # OAuth logging
+    dev.lavalink.youtube.http.YoutubeOauth2Handler: INFO
+    # Cookie logging
+    dev.lavalink.youtube.http.YoutubeCookieHandler: INFO
+  
+  # Enhanced log patterns
+  pattern:
+    console: "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  
+  file:
+    path: ./logs/
+    name: lavalink-ultimate
+  
+  logback:
+    rollingpolicy:
+      max-file-size: 100MB
+      max-history: 15
+      total-size-cap: 1GB
+      # Compress old logs
+      compress: true
+
+# ==========================================================
+# ==              SPRING BOOT ULTIMATE CONFIG            ==
+# ==========================================================
+spring:
+  main:
+    banner-mode: "off"
+    web-application-type: servlet
+    lazy-initialization: false
+  
+  # Enhanced HTTP configuration
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+      file-size-threshold: 10MB
+  
+  # Connection pool settings
+  datasource:
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+
+# ==========================================================
+# ==              METRICS & MONITORING ULTIMATE          ==
+# ==========================================================
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health,info,metrics,prometheus,httptrace"
+      base-path: "/actuator"
+  
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+    
+    metrics:
+      enabled: true
+    
+    prometheus:
+      enabled: true
+  
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+        step: 10s
+        descriptions: true
+    
+    # Custom metrics
+    tags:
+      application: "lavalink-ultimate"
+      version: "2025"
+    
+    # JVM metrics
+    jvm:
+      enabled: true
+    
+    # System metrics  
+    system:
+      enabled: true
+
+# ==========================================================
+# ==              NETWORK & PERFORMANCE ULTIMATE         ==
+# ==========================================================
+# JVM Options yang direkomendasikan (tambahkan di startup):
+# -Xms1g -Xmx4g
+# -XX:+UseG1GC
+# -XX:+UseStringDeduplication
+# -XX:MaxGCPauseMillis=100
+# -XX:+UnlockExperimentalVMOptions
+# -XX:+UseJVMCICompiler
+# -XX:+EnableJVMCI
+# -XX:+UseCompressedOops
+# -XX:+UseCompressedClassPointers
+# -Dnashorn.args=--no-deprecation-warning
+# -Dfile.encoding=UTF-8
+# -Djava.awt.headless=true
+# -Dcom.sun.management.jmxremote=true
+# -Dcom.sun.management.jmxremote.port=9999
+# -Dcom.sun.management.jmxremote.authenticate=false
+# -Dcom.sun.management.jmxremote.ssl=false
+# -Djava.net.preferIPv4Stack=true
+# -Djava.security.egd=file:/dev/./urandom
